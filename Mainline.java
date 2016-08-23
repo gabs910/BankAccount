@@ -35,7 +35,7 @@ public class Mainline {
 		System.out.println(savings.print());
 		System.out.println('\n');
 		
-		checking.toSavTransfer(savings, 200);
+		savings.toTransfer(checking, 100);
 						
 		System.out.println('\n');
 		System.out.println(checking.print() + '\n' + savings.print());

@@ -29,7 +29,7 @@ public class Account {
 		return balance;
 	}
 
-	double toSavTransfer(Account other, double amount) {
+	double toTransfer(Account other, double amount) {
 		if (balance < amount) {
 			System.out.println("Insufficient funds to make requested transer.");
 		} else {
