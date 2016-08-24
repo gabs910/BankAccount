@@ -2,43 +2,70 @@ package ssa;
 
 public class Mainline {
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		Account checking = new Account();
-		checking.setAccountId(100);
-		checking.description = "My personal checking account";
-		checking.balance = 500.00;
-		System.out.println(checking.print());
-		checking.deposit(200);
-		System.out.println(checking.print());
-		checking.withdrawal(600);
-		System.out.println(checking.print());
-		checking.deposit(100);
-		System.out.println(checking.print());
-		checking.withdrawal(300);
-		System.out.println(checking.print());
-		checking.withdrawal(200);
-		System.out.println(checking.print());
 		
-		System.out.println('\n');
-			
-		Account savings = new Account();
-		savings.setAccountId(200);
-		savings.description = "My personal savings account";
-		savings.balance = 1000.00;
-		System.out.println(savings.print());
-		savings.withdrawal(750);
-		System.out.println(savings.print());
-		savings.withdrawal(250);
-		System.out.println(savings.print());
-		savings.deposit(200);
-		System.out.println(savings.print());
-		System.out.println('\n');
-		
-		savings.toTransfer(checking, 100);
-						
-		System.out.println('\n');
-		System.out.println(checking.print() + '\n' + savings.print());
+			public static void main(String[] args) {
+				// TODO Auto-generated method stub
+			/*	Account checking1 = new Account();
+				checking1.setDescription("My personal checking account");
+				checking1.balance = 800.00;
+				checking1.print();
+				checking1.deposit(300.00);
+				checking1.print();
+				checking1.withdraw(699.99);
+				checking1.print();
+				checking1.deposit(149.99);
+				checking1.print();
+				checking1.withdraw(950.00); // this should fail!
+				checking1.print();
+				checking1.withdraw(200.00);
+				checking1.print(); // balance should be 350
+				Account savings1 = new Account("My personal savings account");
+				savings1.deposit(1000.00);
+				savings1.print();
+				savings1.deposit(400.00);
+				savings1.print();
+				savings1.withdraw(750.00);
+				savings1.print();
+				savings1.withdraw(250.00);
+				savings1.print();
+				savings1.deposit(650.00);
+				savings1.print(); // balance should be 1050.00
+				// the transfer
+				checking1.transferFrom(savings1, 100.00); // transfer 100 from savings to checking
+				// another account
+				Account checking2 = new Account("My slush fund checking account");
+				checking2.deposit(300.00);
+				checking2.print();
+				checking2.withdraw(150.00);
+				checking2.print();
+				checking2.deposit(250.00);
+				checking2.print();
+				// more to come. Will be updated during the lab...*
+				// print out all account balances
+				checking1.print();
+				checking2.print();
+				savings1.print();
+				
+				Account Savings5 = new Account(5000, "Secret Savings Account");
+				Savings5.deposit(600);
+				Savings5.print();
+				Savings5.transferFrom(checking2, 100);
+				Savings5.print();				
+				checking2.print(); */
+				
+				
+				Savings firstone = new Savings();
+				firstone.balance = 500;
+				firstone.setInterestRate(.015);
+				firstone.calcDepositInterest(4);
+				firstone.print();
+				
+				
+				Account two = new Account();
+				two.deposit(200);
+				two.print();
+							
+			}
 
 
 
@@ -48,5 +75,5 @@ public class Mainline {
 		
 
 
-	}
+	
 }

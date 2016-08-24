@@ -1,14 +1,17 @@
 package ssa;
+import java.text.DecimalFormat;
 
 public class Account {
+	DecimalFormat df = new DecimalFormat("####0.00");
+	
 	private int accountId;
 	String description;
 	double balance;
 	private static int idCounter = 1000; 
 
 	String print() {
-		System.out.println( "Account: " + getAccountId() + " " + "balance is $" + balance + '\n');
-		return  description + "Account: " + getAccountId() + " " + "balance is $" + balance + '\n';
+		System.out.println( "Account: " + getAccountId() + " " + "balance is $" + df.format(balance) + '\n');
+		return  description + "Account: " + getAccountId() + " " + "balance is $" + df.format(balance) + '\n';
 
 	}
 	private void setAccountId(){
@@ -17,30 +20,36 @@ public class Account {
 	}
 	// deposit method adds to balance when called
 	double deposit(double amount) {
-		balance += amount;
-		return balance;
+		if(amount >= 0) {
+		this.setBalance(this.getBalance() + amount);
+		} else {
+			System.out.println("Invalid Number ");
+		}
+		
+		return this.getBalance();
 	}
-
 	// withdrawal method subtracts from balance when call unless condition is
 	// not met
 	double withdraw(double amount) {
-		if (balance < amount) {
+		
+		if (this.getBalance() < amount) {
 			System.out.println("Insufficient funds!" + '\n');
-		} else {
-			balance -= amount;
+		} else if(amount < 0) {
+			System.out.println("Invalid Number");
+		} else{
+			this.setBalance(this.getBalance() - amount);
 		}
-		return balance;
+		return this.getBalance();
 	}
 
 	double transferFrom(Account other, double amount) {
-		if (balance < amount) {
+		if (this.getBalance() < amount) {
 			System.out.println("Insufficient funds to make requested transer.");
 		} else {
 			other.deposit(amount);
-			balance -= amount;
-
+			this.setBalance(this.getBalance() - amount);
 		}
-		return balance;
+		return this.getBalance();
 
 	}
 // getter for accountId
@@ -56,8 +65,8 @@ public class Account {
 		return balance;
 	}
 //setter for balance can only be used within class
-	public void setBalance(int balance) {
-		this.balance = balance;
+	public void setBalance(double d) {
+		this.balance = d;
 	}
 //getter method getDescription
 	public String getDescription() {
